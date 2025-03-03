@@ -1,0 +1,45 @@
+<div class="card login-card">
+  <div class="card-body">
+    <h3 class="card-title text-center">{{ "LOGIN.TITLE" | translate }}</h3>
+    <form (ngSubmit)="login()" class="login-form">
+      <div class="mb-3">
+        <label for="username" class="form-label">{{
+          "LOGIN.USERNAME" | translate
+        }}</label>
+        <input type="text" class="form-control" id="username" [(ngModel)]="username" name="username" required />
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">
+          {{ "LOGIN.PASSWORD" | translate }}
+      </label>
+        <input type="password" class="form-control" id="password" [(ngModel)]="password" name="password" required />
+      </div>
+
+      <div class="mb-3">
+        <label for="role" class="form-label">{{ "LOGIN.ROLE" | translate }}</label>
+        <select class="form-select" id="role" [(ngModel)]="role" name="role">
+          <option value="user">User</option>
+          <option value="admin">Admin</option>
+        </select>
+      </div>
+
+      <div *ngIf="errorMessage" class="text-danger mb-3">{{ errorMessage }}</div>
+
+      <button type="submit" class="btn btn-primary w-100">{{ "LOGIN.TITLE" | translate }}</button>
+    </form>
+    <div class="text-center mt-3">
+      <a href="/signup" class="text-primary">{{ "LOGIN.GO_TO_SIGNUP" | translate }}</a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .login-card {
+    max-width: 400px;
+    margin: auto;
+    margin-top: 50px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+</style>

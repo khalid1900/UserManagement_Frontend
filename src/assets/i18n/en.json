@@ -1,0 +1,25 @@
+{
+  "LOGIN": {
+    "TITLE": "Login",
+    "USERNAME": "Username",
+    "PASSWORD": "Password",
+    "ROLE": "Role",
+    "USER": "User",
+    "EMAIL":"Email",
+    "ADMINDASHBOARD":"Admin Dashboard",
+    "REGISTERUSERNAME":"Registered Users",
+    "ADMIN": "Admin",
+    "wELLCOME":"Welcome to the User Dashboard",
+    "H2":"You are logged in as a regular user.",
+    "SUBMIT": "Login",
+    "GO_TO_SIGNUP": "Go to Sign Up",
+    "SIGNUP":"SignUp",
+    "FULLNAME": "Full Name",
+    "INVALID_CREDENTIALS": "Invalid Credentials"
+  },
+  "NAVBAR": {
+  "TITLE": "User Management",
+  "USERS": "Users",
+  "LOGOUT": "Logout"
+}
+}

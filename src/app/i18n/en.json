@@ -1,0 +1,11 @@
+{
+    "LOGIN": "Login",
+    "SIGNUP": "Sign Up",
+    "USERNAME": "Username",
+    "PASSWORD": "Password",
+    "ROLE": "Role",
+    "ADMIN": "Admin",
+    "USER": "User",
+    "LOGOUT": "Logout"
+  }
+  

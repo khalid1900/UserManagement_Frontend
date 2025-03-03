@@ -1,0 +1,102 @@
+<!-- admin-dashboard.component.html -->
+<div class="container">
+  <h1>{{
+    "LOGIN.ADMINDASHBOARD" | translate
+  }}</h1>
+
+  <div class="card">
+    <h2>{{
+      "LOGIN.ADMINDASHBOARD" | translate
+    }}</h2>
+
+    <div *ngIf="loading" class="alert alert-info">
+      <p>Loading users...</p>
+    </div>
+
+    <div *ngIf="error" class="alert alert-danger">
+      <p>{{ error }}</p>
+      <button class="btn btn-primary" (click)="loadUsers()">Retry</button>
+    </div>
+
+    <div *ngIf="!loading && !error">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td>{{ user.userName }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.role }}</td>
+              <td>
+                <button class="btn btn-primary btn-sm me-2" (click)="editUser(user.id)">Edit</button>
+                <button class="btn btn-danger btn-sm" (click)="deleteUser(user.id)">Delete</button>
+              </td>
+            </tr>
+            <tr *ngIf="users.length === 0">
+              <td colspan="4" class="text-center">No users found</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit User Modal - Fixed to be visible -->
+  <div class="modal" [ngClass]="{'d-block': showEditModal}" tabindex="-1" *ngIf="showEditModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit User</h5>
+          <button type="button" class="btn-close" (click)="closeModal()" aria-label="Close">×</button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="editUserForm" (ngSubmit)="saveUser()">
+            <div class="mb-3">
+              <label for="userName" class="form-label">Username</label>
+              <input type="text" class="form-control" id="userName" formControlName="userName">
+              <div *ngIf="editUserForm.get('userName')?.invalid && editUserForm.get('userName')?.touched" class="text-danger">
+                Username is required
+              </div>
+            </div>
+            
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" formControlName="email">
+              <div *ngIf="editUserForm.get('email')?.invalid && editUserForm.get('email')?.touched" class="text-danger">
+                Please enter a valid email address
+              </div>
+            </div>
+            
+            <div class="mb-3">
+              <label for="role" class="form-label">Role</label>
+              <select class="form-select" id="role" formControlName="role">
+                <option value="">Select Role</option>
+                <option value="Admin">Admin</option>
+                <option value="User">User</option>
+                <!-- <option value="Manager">Manager</option> -->
+              </select>
+              <div *ngIf="editUserForm.get('role')?.invalid && editUserForm.get('role')?.touched" class="text-danger">
+                Please select a role
+              </div>
+            </div>
+            
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+              <button type="submit" class="btn btn-primary" [disabled]="editUserForm.invalid">Save Changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal backdrop -->
+  <div class="modal-backdrop fade show" *ngIf="showEditModal"></div>
+</div>

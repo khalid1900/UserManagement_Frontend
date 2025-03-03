@@ -1,0 +1,44 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+  }
+  
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between items */
+  }
+  
+  .nav-links a,
+  .nav-links button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+  }
+  
+  .language-switcher {
+    display: flex;
+    gap: 5px; /* Space between language buttons */
+  }
+  
+  .language-switcher button {
+    padding: 5px 10px;
+    border: 1px solid white;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .language-switcher button.active {
+    background: white;
+    color: #333;
+    font-weight: bold;
+  }
+  

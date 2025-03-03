@@ -1,0 +1,29 @@
+<nav class="navbar">
+  <a class="logo" routerLink="/">{{ "NAVBAR.TITLE" | translate }}</a>
+
+  <div class="nav-links">
+    <a routerLink="/users" *ngIf="isAuthenticated()">
+      {{ "NAVBAR.USERS" | translate }}
+    </a>
+    
+    <button (click)="logout()" *ngIf="isAuthenticated()">
+      {{ "NAVBAR.LOGOUT" | translate }}
+    </button>
+
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+      <button
+        [class.active]="getCurrentLang() === 'en'"
+        (click)="switchLanguage('en')"
+      >
+        ENGLISH
+      </button>
+      <button
+        [class.active]="getCurrentLang() === 'ar'"
+        (click)="switchLanguage('ar')"
+      >
+        ARABIC
+      </button>
+    </div>
+  </div>
+</nav>
